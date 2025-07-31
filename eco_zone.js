@@ -4,7 +4,9 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import autenticationRoute from './routes/authenticationRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 import { db } from './dbConfig.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -43,7 +45,8 @@ app.post('/contact', (req, res) => {
 
 app.use('/eco_zone/autenticate', autenticationRoute);
 app.use('/eco_zone/products', productRoutes);
-
+app.use('/eco_zone/cart', cartRoutes);
+app.use('/eco_zone', orderRoutes);
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
     console.log(`Server connected to port ${PORT}`);
