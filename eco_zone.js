@@ -7,6 +7,7 @@ import productRoutes from './routes/productRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import { db } from './dbConfig.js';
 import orderRoutes from './routes/orderRoutes.js';
+import adminRoutes from "./routes/adminRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -47,6 +48,7 @@ app.use('/eco_zone/autenticate', autenticationRoute);
 app.use('/eco_zone/products', productRoutes);
 app.use('/eco_zone/cart', cartRoutes);
 app.use('/eco_zone', orderRoutes);
+app.use("/eco_zone/admin", adminRoutes);
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
     console.log(`Server connected to port ${PORT}`);
