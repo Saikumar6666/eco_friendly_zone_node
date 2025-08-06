@@ -11,7 +11,7 @@ export const getStats = async (req, res) => {
 
 export const getPaginatedProducts = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = 5;
+  const limit = 100;
   const offset = (page - 1) * limit;
   try {
     const data = await getProductsPaginated(limit, offset);

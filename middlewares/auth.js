@@ -1,13 +1,11 @@
-// TEMPORARY admin check without token
+// File: middlewares/adminAuthMiddleware.js
 
 export const adminAuthMiddleware = (req, res, next) => {
-  // Example: use a query param or hardcoded check for now
-  const isAdmin = req.query.admin === 'true'; // or replace with your own logic
+  const role = req.body?.role || req.query?.role;
 
-  if (!isAdmin) {
-    return res.status(403).json({ status: 403, message: 'Access denied: Admin only' });
+  if (role !== 'admin') {
+    return res.status(403).json({ status: 403, message: 'Access denied: Admins only' });
   }
 
-  // Proceed if "admin" is allowed
   next();
 };
